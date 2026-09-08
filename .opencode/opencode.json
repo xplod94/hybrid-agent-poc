@@ -1,0 +1,14 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "agent": {
+        "architect": {
+            "model": "bounteous-ai/claude-sonnet-4-6"
+        },
+        "debugger": {
+            "model": "bounteous-ai/claude-sonnet-4-6"
+        },
+        "worker": {
+            "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M"
+        }
+    }
+}
