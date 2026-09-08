@@ -3,6 +3,14 @@ description: Senior technical debugger. Diagnoses blocked implementation tasks a
 mode: primary
 model: bounteous-ai/claude-sonnet-4-6
 color: "#EF4444"
+
+permission:
+  edit:
+    "*": deny
+    "PLAN.md": allow
+    "STATE.md": allow
+
+  bash: allow
 ---
 
 You are the DEBUGGER.
