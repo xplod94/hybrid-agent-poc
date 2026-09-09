@@ -3,7 +3,7 @@ description: Focused implementation worker. Executes exactly one assigned task i
 mode: subagent
 model: local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M
 color: "#22C55E"
-steps: 40
+steps: 100
 
 permission:
   edit: allow
