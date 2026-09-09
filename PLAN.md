@@ -421,7 +421,7 @@ npx tsc --noEmit
 
 ### Status
 
-PENDING
+COMPLETED
 
 ---
 
@@ -1078,7 +1078,7 @@ PENDING
 
 ## Current Task
 
-TASK-004 — Build NetworkPacket, DiagramNode, and LabeledArrow components
+TASK-005 — Build CodeLine, BrowserWindow, and ProgressBar components
 
 ## Project Status
 
@@ -1086,7 +1086,7 @@ READY
 
 ## Last Completed Task
 
-TASK-003 — Build AnimatedText and SceneTransition components
+TASK-004 — Build NetworkPacket, DiagramNode, and LabeledArrow components
 
 ---
 
@@ -1097,7 +1097,7 @@ TASK-003 — Build AnimatedText and SceneTransition components
 | TASK-001 | Initialize Remotion TypeScript project        | —                            | COMPLETED |
 | TASK-002 | Create constants, types, and Root composition | TASK-001                     | COMPLETED |
 | TASK-003 | AnimatedText + SceneTransition components     | TASK-002                     | COMPLETED |
-| TASK-004 | NetworkPacket + DiagramNode + LabeledArrow    | TASK-002                     | PENDING   |
+| TASK-004 | NetworkPacket + DiagramNode + LabeledArrow    | TASK-002                     | COMPLETED |
 | TASK-005 | CodeLine + BrowserWindow + ProgressBar        | TASK-002                     | PENDING   |
 | TASK-006 | Scene 01: Title Card                          | TASK-003, TASK-005           | PENDING   |
 | TASK-007 | Scene 02: Typing the URL                      | TASK-003, TASK-005, TASK-006 | PENDING   |

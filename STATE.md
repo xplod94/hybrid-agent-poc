@@ -2,7 +2,7 @@
 
 ## Current Task
 
-TASK-003 — Build AnimatedText and SceneTransition components
+TASK-005 — Build CodeLine, BrowserWindow, and ProgressBar components
 
 ## Status
 
@@ -10,7 +10,7 @@ READY
 
 ## Last Completed Task
 
-TASK-002 — Create constants, types, and Root composition
+TASK-004 — Build NetworkPacket, DiagramNode, and LabeledArrow components
 
 ---
 
@@ -74,6 +74,63 @@ PASSED — 0 errors
 
 ---
 
+## TASK-003 — Build AnimatedText and SceneTransition components
+
+### Files Changed
+
+* `remotion-url-explainer/src/components/AnimatedText.tsx`
+* `remotion-url-explainer/src/components/SceneTransition.tsx`
+
+### Validation Result
+
+All required files created successfully.
+
+Command:
+
+```powershell
+npx tsc --noEmit
+```
+
+Result:
+
+```text
+PASSED — 0 errors
+```
+
+---
+
+## TASK-004 — Build NetworkPacket, DiagramNode, and LabeledArrow components
+
+### Files Changed
+
+* `remotion-url-explainer/src/components/NetworkPacket.tsx`
+* `remotion-url-explainer/src/components/DiagramNode.tsx`
+* `remotion-url-explainer/src/components/LabeledArrow.tsx`
+
+### Validation Result
+
+All required files created successfully.
+
+Command:
+
+```powershell
+npx tsc --noEmit
+```
+
+Result:
+
+```text
+PASSED — 0 errors (exit code 0)
+```
+
+### Important Implementation Decisions
+
+* `NetworkPacket` uses linear `interpolate()` with clamped extrapolation to move a glowing circle (and optional traveling label) from start to end; it returns `null` outside its `[startFrame, startFrame + durationFrames]` window.
+* `DiagramNode` renders a centered SVG `<g>` (rect with 12px radius or circle), fading in over 20 frames and scaling up via `spring()`, drawing geometry relative to the center point so scale anchors at `(x, y)`.
+* `LabeledArrow` draws an SVG `<line>` with a `<marker>` arrowhead; when `drawStartFrame` is set it animates `stroke-dashoffset` from the path length to 0 to "draw" the line, supports a dashed `strokeDasharray`, and fades its label in after the line finishes drawing.
+
+---
+
 # Blocked Issues
 
 None.
@@ -98,7 +155,7 @@ None.
 
 # Last Validation
 
-## TASK-002
+## TASK-004
 
 Command:
 
@@ -109,7 +166,7 @@ npx tsc --noEmit
 Result:
 
 ```text
-PASSED — 0 errors
+PASSED — 0 errors (exit code 0)
 ```
 
 ---
@@ -120,3 +177,5 @@ PASSED — 0 errors
 | -------- | --------- | -------------------------------------------------------------------------- |
 | TASK-001 | COMPLETED | `npm install` succeeded; required files and Remotion installation verified |
 | TASK-002 | COMPLETED | `npx tsc --noEmit` passed with 0 errors                                    |
+| TASK-003 | COMPLETED | `npx tsc --noEmit` passed with 0 errors                                    |
+| TASK-004 | COMPLETED | `npx tsc --noEmit` passed with 0 errors                                    |
