@@ -109,28 +109,58 @@ remotion-url-explainer/
 
 ## Task Execution
 
-* Only one task may be `IN_PROGRESS` at a time.
+* Only one task may be `IN_PROGRESS` at one time.
 * Tasks must execute sequentially unless dependencies explicitly permit otherwise.
 * A Worker invocation executes exactly one task.
-* The Worker must stop after completing or blocking its assigned task.
+* The Worker must stop after completing or blocking/flagging its assigned task.
+* The Orchestrator owns workflow routing.
+* The Architect owns complex planning and task-definition repair.
+* The Debugger owns blocker diagnosis and recovery planning.
+* The Worker owns implementation.
 
 ## Allowed Task Statuses
 
 ```text
 PENDING
 IN_PROGRESS
+AMBIGUOUS
 COMPLETED
 BLOCKED
+```
+
+## Status Semantics
+
+```text
+PENDING
+    Task is defined and waiting for execution.
+
+IN_PROGRESS
+    Worker is actively executing the task.
+
+AMBIGUOUS
+    Worker cannot safely execute the task because its specification is
+    incomplete, contradictory, or requires an architectural/product decision.
+    The Orchestrator routes the task to the Architect.
+
+BLOCKED
+    Worker understands the task but cannot complete it because of a
+    technical, environmental, dependency, or validation failure.
+    The Orchestrator routes the task to the Debugger.
+
+COMPLETED
+    Worker completed the task and the specified validation passed.
 ```
 
 ## Valid State Transitions
 
 ```text
-PENDING → IN_PROGRESS → COMPLETED
-                    └→ BLOCKED
+PENDING → IN_PROGRESS
+              ├→ COMPLETED
+              ├→ AMBIGUOUS → Architect → PENDING
+              └→ BLOCKED → Debugger → PENDING
 ```
 
-A `BLOCKED` task must be resolved before dependent tasks proceed.
+A task must not proceed to a dependent task while it is `AMBIGUOUS` or `BLOCKED`.
 
 ---
 
@@ -221,10 +251,10 @@ export const HEIGHT = 1080;
 
 export const SCENES = {
   TITLE:      { start: 0,    end: 120  },
-  TYPING_URL: { start: 120,  end: 360  },
-  DNS:        { start: 360,  end: 660  },
-  TCP:        { start: 660,  end: 960  },
-  HTTP:       { start: 960,  end: 1320 },
+  TYPING_URL: { start: 120, end: 360  },
+  DNS:        { start: 360, end: 660  },
+  TCP:        { start: 660, end: 960  },
+  HTTP:       { start: 960, end: 1320 },
   RENDERING:  { start: 1320, end: 1620 },
   OUTRO:      { start: 1620, end: 1800 },
 } as const;
@@ -893,7 +923,7 @@ npx tsc --noEmit
 ### Definition of Done
 
 * File compiles
-* Summary items and fade-out are correctly sequenced
+* Summary items and fade-out work correctly
 
 ### Status
 
