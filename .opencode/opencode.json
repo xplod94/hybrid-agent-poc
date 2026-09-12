@@ -27,7 +27,10 @@
                     "STATE.md": "allow",
                     "webfetch": "allow"
                 },
-                "bash": "deny",
+                "bash": {
+                    "python scripts/update_plan_state.py *": "allow",
+                    "*": "deny"
+                },
                 "task": "deny"
             }
         },
