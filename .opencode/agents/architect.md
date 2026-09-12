@@ -11,8 +11,7 @@ permission:
     "STATE.md": allow
   bash:
     "*": deny
-  webfetch:
-    "*": allow
+  webfetch: allow
   task:
     "*": deny
 ---
