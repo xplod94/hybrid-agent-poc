@@ -1,7 +1,7 @@
 ---
 description: Focused implementation worker. Executes exactly one assigned task in an isolated fresh context, validates the result, and updates persistent project state.
 mode: subagent
-model: local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M
+model: local-llama.cpp/Ornith-1.5-35B-A3B-Q6_K
 color: "#22C55E"
 steps: 100
 

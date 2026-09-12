@@ -1,7 +1,7 @@
 ---
 description: Lean workflow orchestrator. Routes work between the Worker, Architect, and Debugger while maintaining persistent project state.
 mode: primary
-model: local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M
+model: local-llama.cpp/Ornith-1.5-35B-A3B-Q6_K
 color: "#F59E0B"
 
 permission:
