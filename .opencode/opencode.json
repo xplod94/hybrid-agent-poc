@@ -2,16 +2,53 @@
     "$schema": "https://opencode.ai/config.json",
     "agent": {
         "orchestrator": {
-            "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M"
+            "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M",
+            "prompt": "{file:./agents/orchestrator.md}",
+            "permission": {
+                "edit": "deny",
+                "bash": "deny",
+                "task": {
+                    "*": "deny",
+                    "worker": "allow",
+                    "architect": "allow",
+                    "debugger": "allow"
+                }
+            }
         },
         "architect": {
-            "model": "bounteous-ai/claude-sonnet-4-6"
+            "model": "bounteous-ai/claude-sonnet-4-6",
+            "prompt": "{file:./agents/architect.md}",
+            "permission": {
+                "edit": {
+                    "*": "deny",
+                    "PLAN.md": "allow",
+                    "STATE.md": "allow"
+                },
+                "bash": "deny",
+                "task": "deny"
+            }
         },
         "debugger": {
-            "model": "bounteous-ai/claude-sonnet-4-6"
+            "model": "bounteous-ai/claude-sonnet-4-6",
+            "prompt": "{file:./agents/debugger.md}",
+            "permission": {
+                "edit": {
+                    "*": "deny",
+                    "PLAN.md": "allow",
+                    "STATE.md": "allow"
+                },
+                "bash": "allow",
+                "task": "deny"
+            }
         },
         "worker": {
-            "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M"
+            "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M",
+            "prompt": "{file:./agents/worker.md}",
+            "permission": {
+                "edit": "allow",
+                "bash": "allow",
+                "task": "deny"
+            }
         }
     }
 }
