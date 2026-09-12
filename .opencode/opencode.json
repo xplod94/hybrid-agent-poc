@@ -4,6 +4,7 @@
         "orchestrator": {
             "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M",
             "prompt": "{file:./agents/orchestrator.md}",
+            "mode": "primary",
             "permission": {
                 "edit": "deny",
                 "bash": "deny",
@@ -18,11 +19,13 @@
         "architect": {
             "model": "bounteous-ai/claude-sonnet-4-6",
             "prompt": "{file:./agents/architect.md}",
+            "mode": "subagent",
             "permission": {
                 "edit": {
                     "*": "deny",
                     "PLAN.md": "allow",
-                    "STATE.md": "allow"
+                    "STATE.md": "allow",
+                    "webfetch": "allow"
                 },
                 "bash": "deny",
                 "task": "deny"
@@ -31,6 +34,7 @@
         "debugger": {
             "model": "bounteous-ai/claude-sonnet-4-6",
             "prompt": "{file:./agents/debugger.md}",
+            "mode": "subagent",
             "permission": {
                 "edit": {
                     "*": "deny",
@@ -44,6 +48,7 @@
         "worker": {
             "model": "local-llama.cpp/Ornith-1.5-35B-A3B-Q5_K_M",
             "prompt": "{file:./agents/worker.md}",
+            "mode": "subagent",
             "permission": {
                 "edit": "allow",
                 "bash": "allow",

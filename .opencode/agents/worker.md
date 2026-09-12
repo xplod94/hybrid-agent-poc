@@ -60,9 +60,15 @@ Immediately:
 3. Identify the task explicitly assigned by the Orchestrator.
 4. Verify that the assigned task exists in PLAN.md.
 5. Verify that STATE.md identifies the same Current Task.
-6. Verify that the task status is executable.
+6. Verify that the task status is executable OR that STATE.md has
+   Status: RECOVERY_READY for this task.
 7. Verify that all dependencies are COMPLETED.
+If STATE.md has Status: RECOVERY_READY:
+  8. Read the Debugger recovery information in STATE.md.
+  9. Apply that recovery only as part of the assigned task.
+  10. Continue with the normal task validation.
 8. Inspect only files relevant to the assigned task.
+
 
 If the assigned task and STATE.md disagree:
 
